@@ -8,41 +8,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class CustomListAdapter extends ArrayAdapter<product> {
-
-    ArrayList<product> prod;
+public class CustomListAdapter extends ArrayAdapter<Product> {
+    ArrayList<Product> prod;
     Context context;
     int resource;
 
-
-    public CustomListAdapter(Context context, int resource, ArrayList<product> prod) {
+    public CustomListAdapter(Context context, int resource, ArrayList<Product> prod) {
         super(context, resource, prod);
 
-        this.prod=prod;
-        this.context=context;
-        this.resource=resource;
+        this.prod = prod;
+        this.context = context;
+        this.resource = resource;
     }
 
     @Override
 
-    public View getView(int position, View convertView, ViewGroup parent){
-
-        if(convertView==null) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) getContext()
                     .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.grid_item, null, true);
         }
 
-        product pro=getItem(position);
+        Product pro = getItem(position);
 
-        ImageView imageView=(ImageView)convertView.findViewById(R.id.imageView);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
         Picasso.with(context).load(pro.getImage()).into(imageView);
 
 
